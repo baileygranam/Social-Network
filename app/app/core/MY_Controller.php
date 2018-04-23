@@ -8,6 +8,15 @@ class MY_Controller extends CI_Controller
 	{
         parent::__construct();
         $this->CI = & get_instance();
+
+        if($this->router->fetch_class() == 'LoginController' && $this->router->fetch_method() == 'index' && !empty($this->session->user_id))
+        {
+            redirect('/home');
+        }
+        else if($this->router->fetch_class() != 'LoginController' && empty($this->session->user_id))
+        {
+            redirect('/login');
+        }
     }
     
     /** 

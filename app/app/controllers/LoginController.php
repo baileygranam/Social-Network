@@ -12,7 +12,7 @@ class LoginController extends MY_Controller
 	{
 		parent::__construct();
         $this->load->library('form_validation'); 
-        $this->load->helper(array('form', 'url'));
+        $this->load->helper('form');
         $this->load->model('Login');
     }
 
@@ -24,6 +24,13 @@ class LoginController extends MY_Controller
 		$this->view('login/index.php');
 	}
 
+	/**
+     * The authenticate() function is performed when a user submits the
+     * login form. The information is loaded and proccessed through the
+     * model. If the login is successful the user will be directed to
+     * the dashboard. If the login fails then the user will be directed
+     * to the login page with an error.
+     */
 	public function authenticate()
 	{
 		/* User submitted data to authenticate. */
@@ -50,6 +57,15 @@ class LoginController extends MY_Controller
             /* Redirect to the home page. */
 			redirect('/home');
 		}
+	}
+
+	/**
+	* Method to logout the user.
+	*/
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect('/login');
 	}
 
 	/**

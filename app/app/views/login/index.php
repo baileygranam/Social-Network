@@ -2,7 +2,7 @@
 </div>
 
 <div class="uk-card uk-card-default uk-card-body uk-card-large uk-width-1-3@s uk-position-center uk-card-login">
-	<form id="login" action="login/authenticate" method="POST" class="uk-text-center uk-animation-scale-up">
+	<form id="login" action="login/authenticate" method="POST" class="uk-text-center uk-animation-scale-up <?php if(!empty($this->session->flashdata('error'))) echo 'bounce'; ?>">
 		<h2>SIGN IN</h2>
 		<p>Please login to continue...</p>
 		<?php if(!empty($this->session->flashdata('error'))) { ?>
