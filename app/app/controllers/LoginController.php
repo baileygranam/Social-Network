@@ -26,31 +26,30 @@ class LoginController extends MY_Controller
 
 	public function authenticate()
 	{
-		/* Run the form validation to check if provided input is valid. */
-		if (!$this->validate()) 
-		{
-			/* Respond to AJAX request with a value of false. */
-			echo false;
-			return false;
-		}
-
 		/* User submitted data to authenticate. */
 		$data = array(
 			'email'    => $this->input->post('email'),
 			'password' => $this->input->post('password')
 		);
 
-		if($this->Login->login($data))
+		/* Check for input validation and user authentication. */
+		if (!$this->validate() || !$this->Login->login($data)) 
 		{
-			echo true;
+            $this->session->set_flashdata('error', true);
+			redirect('/login');
+			return false;
 		}
 		else
 		{
-			echo false;
+			/* Retrieve the user's data. */
+			$data = $this->Login->fetchUserData($data['email']);
+
+            /* Add user data to the session */
+            $this->session->set_userdata($data);
+
+            /* Redirect to the home page. */
+			redirect('/home');
 		}
-
-
-		
 	}
 
 	/**

@@ -19,50 +19,26 @@ $(document).ready(function()
         window.location = newLocation;
     }
 
-});
-
-function login()
-{
     $('form').submit(function(e) 
     { 
-        e.preventDefault();
         var form = this;
+        e.preventDefault();
+
+        setTimeout(function () {
+            form.submit();
+        }, 3000);
+
         $('form').hide(500);
         $('.spinner').show(600);
 
-        $.ajax({
-            type: "POST",
-            url: "login/authenticate",
-            data: {
-                email:    $('#email').val(),
-                password: $('#password').val(),
-                remember: $('#remember').val()
-            },
-            success: function (response) {
-                if(response)
-                {
-                    setTimeout(function () 
-                    {
-                       $('body').fadeOut(500);
+        setTimeout(function () 
+        {
+            $('body').fadeOut(500);
+        }, 2500);
+    })
 
-                        setTimeout(function () 
-                        {
-                            window.location.href = "/home/";
-                        }, 500);
+});
 
-                    }, 2000);
-                }
-                else
-                {
-                    setTimeout(function () 
-                    {
-                        $( "#alert p" ).text("Email or password incorrect!");
-                        $('#alert').show();
-                        $('form').show(500);
-                        $('.spinner').hide(500);
-                    }, 2000);
-                }
-            }
-        });
-    });
-}
+
+
+   
