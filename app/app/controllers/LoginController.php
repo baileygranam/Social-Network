@@ -11,8 +11,9 @@ class LoginController extends MY_Controller
 	public function __construct() 
 	{
 		parent::__construct();
-        $this->load->library(array('form_validation', 'session')); 
+        $this->load->library('form_validation'); 
         $this->load->helper(array('form', 'url'));
+        $this->load->model('Login');
     }
 
 	/**
@@ -25,13 +26,30 @@ class LoginController extends MY_Controller
 
 	public function authenticate()
 	{
-
 		/* Run the form validation to check if provided input is valid. */
 		if (!$this->validate()) 
 		{
+			/* Respond to AJAX request with a value of false. */
 			echo false;
 			return false;
 		}
+
+		/* User submitted data to authenticate. */
+		$data = array(
+			'email'    => $this->input->post('email'),
+			'password' => $this->input->post('password')
+		);
+
+		if($this->Login->login($data))
+		{
+			echo true;
+		}
+		else
+		{
+			echo false;
+		}
+
+
 		
 	}
 
