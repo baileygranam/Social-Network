@@ -1,34 +1,37 @@
-<?php 
-$error = (!empty($this->session->flashdata('error'))) ? true : false;  
-$error_message = ($error) ? $this->session->flashdata('error_message') : 'Something went wrong...';
-?>
-<div class="container-fluid background-special">
+<?php $error = (!empty($this->session->flashdata('error'))) ? true : false; ?>
+<div class="container-fluid h-100 background-special">
 	<div class="row h-100 justify-content-center align-items-center">
 		<div class="col-12">
 			<div class="card mx-auto" style="max-width:600px; width:auto;">
-				<form method="POST" action="register/submit" class="animated <?php echo ($error) ? 'bounce' : 'zoomIn'; ?>">
+				<form method="POST" action="/register/submit" class="animated <?php echo ($error) ? 'bounce' : 'zoomIn'; ?>">
 					<div class="text-center">
 						<h2>Welcome To Iluminous</h2>
 						<p>Let's get started...</p>
 					</div>
 					<?php if ($error) { ?>
 					<div class="alert alert-danger" role="alert">
-						<?php echo $error_message; ?>
+						<small>
+							<?php echo form_error('first_name'); ?>
+							<?php echo form_error('last_name'); ?>
+							<?php echo form_error('email'); ?>
+							<?php echo form_error('username'); ?>
+ 							<?php echo form_error('password'); ?>
+						</small>
 					</div>
 					<?php } ?>
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<small class="form-text text-muted" for="first_name">First Name</small>
-  							<input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
+  							<input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" value="<?php echo set_value('first_name'); ?>" required>
 						</div>
 						<div class="form-group col-md-6">
 							<small class="form-text text-muted" for="last_name">Last Name</small>
-  							<input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
+  							<input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" value="<?php echo set_value('last_name'); ?>" required>
 						</div>
 					</div>
 					<div class="form-group">
 						<small class="form-text text-muted" for="email">Email</small>
-					<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+					<input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo set_value('email'); ?>" required>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
@@ -37,7 +40,7 @@ $error_message = ($error) ? $this->session->flashdata('error_message') : 'Someth
 								<div class="input-group-prepend">
 	  								<div class="input-group-text">@</div>
 								</div>
-								<input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+								<input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?php echo set_value('username'); ?>" required>
 								</div>
 						</div>
 						<div class="form-group col-md-6">
