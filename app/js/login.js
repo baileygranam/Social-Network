@@ -28,6 +28,7 @@ $(document).ready(function()
             form.submit();
         }, 3000);
 
+        $('form').addClass('zoomOut');
         $('form').hide(500);
         $('.spinner').show(600);
 
