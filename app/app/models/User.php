@@ -90,34 +90,4 @@ class User extends CI_Model
 
         return ($data);
     }
-
-    /**
-     * Method to check if a username exists.
-     *
-     * @access public
-     * @param $username - Username to check if exists.
-     * @return boolean - True if exists, false if fail.
-     */
-    public function checkUsernameExists($username)
-    {
-        $this->db->where('username',$username);
-        $query = $this->db->get('users');
-
-        return ($query->num_rows() > 0);
-    }
-
-    /**
-     * Method to check if an email exists.
-     *
-     * @access public
-     * @param $username - Email to check if exists.
-     * @return boolean - True if exists, false if fail.
-     */
-    public function checkEmailExists($email)
-    {
-        $this->db->where('email',$email);
-        $query = $this->db->get('users');
-
-        return ($query->num_rows() > 0);
-    }
 }
