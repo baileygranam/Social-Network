@@ -8,6 +8,8 @@ class MY_Controller extends CI_Controller
 	{
         parent::__construct();
         $this->CI = & get_instance();
+
+        $this->checkSession();
     }
     
     /** 
@@ -36,5 +38,36 @@ class MY_Controller extends CI_Controller
         /* Load the footer template file. */
         $this->load->view('templates/footer');   
     }
-    
+
+    /**
+     * Method to check a user's session and decide where to redirect (if necessary).
+     *
+     * @access private
+     */
+    private function checkSession()
+    {
+        $controller_list = array(
+            'MainController' => 1,
+            'HomeController' => 1,
+            'LoginController' => 0
+        );
+
+        if($this->router->fetch_method() != 'logout')
+        {
+            if(empty($this->session->user_id))
+            {
+                if($controller_list[$this->router->fetch_class()])
+                {
+                    redirect('/login');
+                }
+            }
+            else if(empty(!$this->session->user_id))
+            {
+                if(!$controller_list[$this->router->fetch_class()])
+                {
+                    redirect('/home');
+                }
+            }
+        }
+    }  
 }
