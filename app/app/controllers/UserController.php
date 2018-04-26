@@ -17,6 +17,8 @@ class UserController extends MY_Controller
 
 	/**
 	 * Method to load a given page for this controller. (Route Specific).
+	 *
+	 * @access public
 	 */
 	public function index($page)
 	{
@@ -24,16 +26,17 @@ class UserController extends MY_Controller
 	}
 
 	/**
-    * The register() method processes the information submitted by an
-    * administrator to register a new employee in the database.
+    * Method to register a new user.
+    * 
+    * @access public
     */
     public function register()
     {
     	/* Set the form validation rules to ensure input validity. */
 		$this->form_validation->set_rules('first_name', 'First Name', 'trim|required|min_length[2]|max_length[35]');
         $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required|min_length[2]|max_length[35]');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|max_length[60]');
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|max_length[12]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|max_length[60], callback_checkEmailExists[email]');
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|max_length[12], callback_checkUsernameExists[username]');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]|max_length[255]');
 
         /* Data to be registered. */
@@ -58,11 +61,9 @@ class UserController extends MY_Controller
     }
 
    	/**
-     * The login() function is performed when a user submits the
-     * login form. The information is loaded and proccessed through the
-     * model. If the login is successful the user will be directed to
-     * the dashboard. If the login fails then the user will be directed
-     * to the login page with an error.
+     * Method to login and authenticate a user.
+     *
+     * @access public
      */
 	public function login()
 	{
@@ -97,6 +98,8 @@ class UserController extends MY_Controller
 
 	/**
 	* Method to logout the user.
+	*
+	* @access public
 	*/
 	public function logout()
 	{
@@ -106,10 +109,36 @@ class UserController extends MY_Controller
 
 	/**
 	 * Method to validate the form data provided by the user.
-	 * @return True if form data is valid, false otherwise.
+	 *
+	 * @access private
+	 * @return True if form is valid, false otherwise.
 	 */
 	private function validate()
 	{
 		return ($this->form_validation->run());
+	}
+
+	/**
+	 * Method to check if a username exists.
+	 *
+	 * @access private
+	 * @param $username - username of a user. 
+	 * @return True if exists, false if not.
+	 */
+	private function checkUsernameExists($username)
+	{
+		return ($this->User->checkUsernameExists($username));
+	}
+
+	/**
+	 * Method to check if an email exists.
+	 *
+	 * @access private
+	 * @param $email - Email of a user. 
+	 * @return True if exists, false if not.
+	 */
+	private function checkEmailExists($email)
+	{
+		return ($this->User->checkEmailExists($email));
 	}
 }
