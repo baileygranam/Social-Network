@@ -39,10 +39,10 @@ class RegisterController extends MY_Controller
 		}
 
     	/* Set the form validation rules to ensure input validity. */
-		$this->form_validation->set_rules('first_name', 'First Name', 'trim|required|min_length[2]|max_length[35]');
-        $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required|min_length[2]|max_length[35]');
+		$this->form_validation->set_rules('first_name', 'First Name', 'trim|required|min_length[2]|max_length[35]|alpha_numeric');
+        $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required|min_length[2]|max_length[35]|alpha_numeric');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|max_length[60]|is_unique[users.email]');
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|max_length[12]|is_unique[users.username]');
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|max_length[12]|is_unique[users.username]|alpha_numeric');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]|max_length[255]');
 
         /* Set the form validation error messages. */
@@ -74,8 +74,26 @@ class RegisterController extends MY_Controller
     	}
     	else 
     	{
-    		redirect('/login');
+    		$this->auto_login($data['email']);
     	}
+    }
+
+    /**
+     * Method to automatically login a user without a password. 
+     * Used for post-registration login.
+     *
+     * @access private
+     */
+    private function auto_login($email)
+    {
+        /* Retrieve the user's data. */
+        $data = $this->User->get_user($email);
+
+        /* Add user data to the session */
+        $this->session->set_userdata($data);
+
+        /* Redirect to the home page. */
+        redirect('/home');
     }
 
     /**

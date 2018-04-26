@@ -4,10 +4,8 @@
 		<div class="col-12">
 			<div class="card mx-auto" style="max-width:600px; width:auto;">
 				<form method="POST" action="/register/submit" class="animated <?php echo ($error) ? 'bounce' : 'zoomIn'; ?>">
-					<div class="text-center">
-						<h2>Welcome To Iluminous</h2>
-						<p>Let's get started...</p>
-					</div>
+					<h2>Welcome To Iluminous</h2>
+					<p>Let's get started...</p>
 					<?php if ($error) { ?>
 					<div class="alert alert-danger" role="alert">
 						<small>
@@ -48,10 +46,8 @@
 								<input type="password" class="form-control" pattern=".{8,}" title="Password must contain at least 8 characters." name="password" placeholder="Password" required>
 						</div>
 					</div>
-					<div class="text-center">
 						<button class="btn btn-dark btn-register mt-4" type="submit">SIGN UP</button>
 				  		<small class="form-text text-muted mt-4">Already have an account? <a href="/login">Login</a></small>
-			  		</div>
 				</form>
 			</div>
     	</div>   

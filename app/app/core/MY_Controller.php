@@ -47,9 +47,10 @@ class MY_Controller extends CI_Controller
     private function checkSession()
     {
         $controller_list = array(
-            'MainController' => 1,
-            'HomeController' => 1,
-            'LoginController' => 0
+            'MainController'     => 1,
+            'HomeController'     => 1,
+            'LoginController'    => 0,
+            'RegisterController' => 0
         );
 
         if($this->router->fetch_method() != 'logout')
