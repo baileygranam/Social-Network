@@ -29,6 +29,12 @@ class MY_Controller extends CI_Controller
         /* Load the header template file. */
         $this->load->view('templates/header', $data);
 
+        /* Load the navigation bar for logged in users. */
+        if(!empty($this->session->user_id))
+        {
+            $this->load->view('templates/navbar');
+        }
+
         /* Load the pages requested by the controller. */
         for($i = 0; $i < count($page); $i++)
         {
@@ -48,7 +54,7 @@ class MY_Controller extends CI_Controller
     {
         $controller_list = array(
             'MainController'     => 1,
-            'HomeController'     => 1,
+            'DashboardController'     => 1,
             'LoginController'    => 0,
             'RegisterController' => 0
         );
@@ -66,7 +72,7 @@ class MY_Controller extends CI_Controller
             {
                 if(!$controller_list[$this->router->fetch_class()])
                 {
-                    redirect('/home');
+                    redirect('/dashboard');
                 }
             }
         }

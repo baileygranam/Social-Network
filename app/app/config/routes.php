@@ -57,7 +57,7 @@ $route['register/submit'] = 'RegisterController/register';
 
 $route['logout']   = 'LoginController/logout';
 
-$route['home'] = 'HomeController/index';
+$route['dashboard'] = 'DashboardController/index';
 $route['default_controller'] = 'MainController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
