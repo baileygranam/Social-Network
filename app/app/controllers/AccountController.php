@@ -19,6 +19,9 @@ class AccountController extends MY_Controller
 
 		/* Load the Account model. */
         $this->load->model('Account');
+
+        /* Load the Post mode. */
+        $this->load->model('Post');
     }
 
    	/**
@@ -47,6 +50,6 @@ class AccountController extends MY_Controller
         );
 
 		/* If the validation fails or the post creation fails then false, otherwise true. */
-		echo (!$this->validate() || !$this->Account->create_post($data)) ? false : true;
+		echo (!$this->validate() || !$this->Post->create($data)) ? false : true;
 	}
 }
