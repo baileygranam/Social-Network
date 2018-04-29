@@ -95,15 +95,4 @@ class RegisterController extends MY_Controller
         /* Redirect to the home page. */
         redirect('/home');
     }
-
-    /**
-	 * Method to validate the form data provided by the user.
-	 *
-	 * @access private
-	 * @return True if form is valid, false otherwise.
-	 */
-	private function validate()
-	{
-		return ($this->form_validation->run());
-	}
 }

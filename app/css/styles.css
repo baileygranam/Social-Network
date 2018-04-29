@@ -30,6 +30,18 @@ a, a:hover, a:active, a:visited
   background: linear-gradient(90deg, rgba(80,88,198,1) 0%, rgba(136,142,242,1) 100%);
 }
 
+.swal-button {
+  border-radius: 0;
+  padding:10px 30px;
+  background-color: rgba(80,88,198,0.8);
+  border:none;
+  letter-spacing: 0.5px;
+  font-weight: 300;
+  color:white;
+  width:110px;
+  height:44px;
+}
+
 .navbar li
 {
   margin: 0 10px;
@@ -73,11 +85,59 @@ a, a:hover, a:active, a:visited
   min-height:100%;
 }
 
-.card
+.card-custom
 {
 	border-radius:5px;
 	padding:60px 70px;
 	box-shadow:0 5px 15px rgba(0,0,0,.12) !important;
+}
+
+.card-post
+{
+  border:none;
+  box-shadow:0 0 20px 4px rgba(0,0,0,.08) !important;
+}
+
+.btn-post:hover
+{
+  background-color: rgba(80,88,198,1);
+}
+
+.btn-post:target
+{
+  background-color: rgba(80,88,198,1.2);
+}
+
+.card-post .card-footer
+{
+  border:none;
+}
+
+.btn-post
+{
+  border-radius: 0;
+  padding:10px 30px;
+  background-color: rgba(80,88,198,0.8);
+  border:none;
+  letter-spacing: 0.5px;
+  font-weight: 300;
+  color:white;
+  width:110px;
+  height:44px;
+}
+
+.card-footer
+{
+  padding:0;
+}
+
+.form-group #caption 
+{
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none !important;
+    box-shadow: none;
 }
 
 .btn-login
@@ -107,6 +167,12 @@ input.form-control::placeholder
 {
   color:#A8A8A8;
   font-weight: 100;
+}
+
+textarea.form-control::placeholder
+{
+  color:#A8A8A8;
+  font-weight: 300;  
 }
 
 .dropdown .dropdown-menu {
@@ -167,3 +233,25 @@ input.form-control::placeholder
     transform: scale(1.0);
   }
 }
+
+.lds-dual-ring {
+  display: inline-block;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }

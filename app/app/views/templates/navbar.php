@@ -10,8 +10,8 @@
             <li class="nav-item <?php if($this->uri->segment(1) == 'teams') echo 'active'; ?>">
                 <a class="nav-link" href="/teams">Teams</a>
             </li>
-            <li class="nav-item <?php if($this->uri->segment(1) == 'colleagues') echo 'active'; ?>">
-                <a class="nav-link" href="/colleagues">Colleagues</a>
+            <li class="nav-item <?php if($this->uri->segment(1) == 'friends') echo 'active'; ?>">
+                <a class="nav-link" href="/friends">Friends</a>
             </li>
         </ul>
     </div>
@@ -26,7 +26,8 @@
         <ul class="navbar-nav ml-auto">
             <div class="dropdown show">
                 <span class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor:pointer;">
-                    <img src="https://media.licdn.com/dms/image/C5103AQE6vXK_Uptc9A/profile-displayphoto-shrink_200_200/0?e=1530111600&v=beta&t=jAQ-47DgFBCPdl2aaGVsB5ABcjwknMuhEJ9IGnPL-uA" class="profile-img" aria-haspopup="true" aria-expanded="false"> Bailey Granam
+                    <img src="https://media.licdn.com/dms/image/C5103AQE6vXK_Uptc9A/profile-displayphoto-shrink_200_200/0?e=1530111600&v=beta&t=jAQ-47DgFBCPdl2aaGVsB5ABcjwknMuhEJ9IGnPL-uA" class="profile-img" aria-haspopup="true" aria-expanded="false"> 
+                    <?php echo ucfirst($this->session->first_name) . ' ' . ucfirst($this->session->last_name); ?>
                   </span>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="/"><img src="https://image.flaticon.com/icons/svg/134/134105.svg" width="20"> Profile</a>

@@ -77,15 +77,4 @@ class LoginController extends MY_Controller
 		$this->session->sess_destroy();
 		redirect('/login');
 	}
-
-	/**
-	 * Method to validate the form data provided by the user.
-	 *
-	 * @access private
-	 * @return True if form is valid, false otherwise.
-	 */
-	private function validate()
-	{
-		return ($this->form_validation->run());
-	}
 }

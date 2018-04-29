@@ -58,6 +58,9 @@ $route['register/submit'] = 'RegisterController/register';
 $route['logout']   = 'LoginController/logout';
 
 $route['dashboard'] = 'DashboardController/index';
+
+$route['account/post'] = 'AccountController/post';
+
 $route['default_controller'] = 'MainController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

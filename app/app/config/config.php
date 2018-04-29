@@ -452,7 +452,7 @@ $config['csrf_protection'] = FALSE;
 $config['csrf_token_name'] = 'token-csrf';
 $config['csrf_cookie_name'] = 'coookie-csrf';
 $config['csrf_expire'] = 7200;
-$config['csrf_regenerate'] = TRUE;
+$config['csrf_regenerate'] = FALSE;
 $config['csrf_exclude_uris'] = array();
 
 /*

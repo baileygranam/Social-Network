@@ -1,16 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class User extends CI_Model
 {
-	/**
-	 * Class Constructor
-	 */
+    /**
+     * Class Constructor
+     */
     public function __construct()
     {
         parent::__construct();
     }
-
     /**
      * Method to create a new user.
      * 
@@ -22,11 +20,9 @@ class User extends CI_Model
     {
         /* Hash Password using Bcrypt. */
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-
         /* Return result of registration. */
         return $this->db->insert('users', $data);
     }
-
     /**
      * Method to authenticate a user's credentials. 
      *
@@ -40,23 +36,17 @@ class User extends CI_Model
         $this->db->select('password');
         $this->db->from('users');
         $this->db->where('email', $data['email']);
-
         /* Retrieve the result. */
         $result = $this->db->get();
-
         /* Check to see if a result exists. */
         if($result->num_rows() != 1) return false;
-
         /* Retrieve the hashed password. */
         $hashedPassword = $result->row()->password;
-
         /* Check to see if user provided password matches the hashed password. */
         $verify = password_verify($data['password'], $hashedPassword);
-
         /* Return status of login authentication. */
         return ($verify);
     }
-
     /**
      * Method to retrieve a user's common data. 
      *
@@ -70,16 +60,12 @@ class User extends CI_Model
         $this->db->select('user_id, email, first_name, last_name, username');
         $this->db->from('users');
         $this->db->where('email', $email);
-
         /* Retrieve the result. */
         $result = $this->db->get();
-
         /* Check to see if a result exists. */
         if($result->num_rows() != 1) return false;
-
         /* Retrieve the row. */
         $result = $result->row();
-
         $data = array(
             'user_id'    => $result->user_id,
             'email'      => $result->email,
@@ -87,7 +73,6 @@ class User extends CI_Model
             'last_name'  => $result->last_name,
             'username'   => $result->username
         );
-
         return ($data);
     }
 }

@@ -53,10 +53,11 @@ class MY_Controller extends CI_Controller
     private function checkSession()
     {
         $controller_list = array(
-            'MainController'     => 1,
-            'DashboardController'     => 1,
-            'LoginController'    => 0,
-            'RegisterController' => 0
+            'MainController'      => 1,
+            'DashboardController' => 1,
+            'LoginController'     => 0,
+            'RegisterController'  => 0,
+            'AccountController'   => 1
         );
 
         if($this->router->fetch_method() != 'logout')
@@ -76,5 +77,16 @@ class MY_Controller extends CI_Controller
                 }
             }
         }
-    }  
+    } 
+
+     /**
+     * Method to validate the form data provided by the user.
+     *
+     * @access public
+     * @return True if form is valid, false otherwise.
+     */
+    public function validate()
+    {
+        return ($this->form_validation->run());
+    } 
 }

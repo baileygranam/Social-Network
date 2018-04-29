@@ -1,9 +1,14 @@
-<?php $error = (!empty($this->session->flashdata('error'))) ? true : false; ?>
+<?php 
+$error = (!empty($this->session->flashdata('error'))) ? true : false;  
+$animation = ($error) ? 'bounce' : 'zoomIn'; 
+$form_attributes = array('class' => 'animated ' . $animation, 'id' => 'form');
+?>
+
 <div class="container-fluid h-100 background-special">
 	<div class="row h-100 justify-content-center align-items-center">
 		<div class="col-12">
-			<div class="card mx-auto" style="max-width:600px; width:auto;">
-				<form method="POST" action="/register/submit" class="animated <?php echo ($error) ? 'bounce' : 'zoomIn'; ?>">
+			<div class="card card-custom mx-auto" style="max-width:600px; width:auto;">
+				<?php echo form_open('/register/submit', $form_attributes); ?>
 					<h2>Welcome To Iluminous</h2>
 					<p>Let's get started...</p>
 					<?php if ($error) { ?>

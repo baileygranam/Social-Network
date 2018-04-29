@@ -1,25 +1,25 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Register extends CI_Model
+class Account extends CI_Model
 {
-	/**
-	 * Class Constructor
-	 */
+    /**
+     * Class Constructor
+     */
     public function __construct()
     {
         parent::__construct();
     }
 
     /**
-     * Method to create a new user.
+     * Method to create a new post.
      * 
      * @access public
-     * @param  $data   - Array of user data.
+     * @param  $data   - Array of post data.
      * @return boolean - True if success, false if fail.
      */
-    public function create_user($data)
+    public function create_post($data)
     {
-        return $this->db->insert('users', $data);
+        return $this->db->insert('posts', $data);
     }
 }

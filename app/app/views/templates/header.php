@@ -22,6 +22,8 @@
 		<!-- JQuery CDN -->
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 		<!-- Bootstrap JS -->
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
@@ -29,7 +31,9 @@
 		<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 
 		<!-- Custom JS -->
-		<script src="/js/login.js"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script src="/js/main.js"></script>
+		<script src="/js/notify.js"></script>
 	</head>
 <body>
 
