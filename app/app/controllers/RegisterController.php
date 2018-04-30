@@ -93,6 +93,6 @@ class RegisterController extends MY_Controller
         $this->session->set_userdata($data);
 
         /* Redirect to the home page. */
-        redirect('/home');
+        redirect('/dashboard');
     }
 }

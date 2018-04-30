@@ -27,13 +27,34 @@ class Post extends CI_Model
      * Method to delete a post.
      * 
      * @access public
-     * @param  $data   - Array of post data.
+     * @param  $id     - ID of post to be deleted.
      * @return boolean - True if success, false if fail.
      */
-    public function delete($data)
+    public function delete($id)
     {
-        $this->db->set('isDeleted', 1);
-        $this->db->where($data);
+        $this->db->set('isDeleted', 1)
+                 ->where('user_id', $this->session->user_id)
+                 ->where('post_id', $id);
         return ($this->db->update('posts'));
     }
+
+    /**
+     * Method to retrieve a timeline of user/friend posts.
+     * 
+     * @access public
+     * @return $data  - Timeline of posts.
+     */
+    public function get_timeline()
+    {
+        $this->db->select('*')
+                 ->from('posts')
+                 ->join('users', 'posts.user_id = users.user_id', 'INNER')
+                 ->where('users.user_id', $this->session->user_id)
+                 ->where('posts.isDeleted', 0)
+                 ->order_by('posts.post_id', 'DESC');
+        $data = $this->db->get();
+
+        return $data;
+    }
+
 }

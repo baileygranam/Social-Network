@@ -59,7 +59,7 @@ $route['logout']   = 'LoginController/logout';
 
 $route['dashboard'] = 'DashboardController/index';
 
-$route['account/post'] = 'AccountController/post';
+$route['posts/create'] = 'AccountController/create_post';
 
 $route['default_controller'] = 'MainController';
 $route['404_override'] = '';

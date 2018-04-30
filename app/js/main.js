@@ -56,12 +56,16 @@ $(document).ready(function()
 
         $.ajax({
             type: "POST",
-            url: '/account/post',
+            url: '/posts/create',
             data: {caption: caption},
             success: function(data){
                 if(data == 1)
                 {
                     swal("Success!", "Your post has been created.", "success");
+                    setTimeout( 
+                      function() {
+                        window.location.reload(true);
+                      }, 2000);
                     $('textarea').val('');
                 }
                 else

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:100,300,400');
 
+
 body, html
 {
 	height:100%;
@@ -30,26 +31,9 @@ a, a:hover, a:active, a:visited
   background: linear-gradient(90deg, rgba(80,88,198,1) 0%, rgba(136,142,242,1) 100%);
 }
 
-.swal-button {
-  border-radius: 0;
-  padding:10px 30px;
-  background-color: rgba(80,88,198,0.8);
-  border:none;
-  letter-spacing: 0.5px;
-  font-weight: 300;
+.navbar .navbar-nav
+{
   color:white;
-  width:110px;
-  height:44px;
-}
-
-.navbar li
-{
-  margin: 0 10px;
-}
-
-.dropdown-item img
-{
-  margin-right:5px;
 }
 
 .navbar-brand
@@ -60,9 +44,14 @@ a, a:hover, a:active, a:visited
   font-size:26px;
 }
 
-.navbar .navbar-nav
+.navbar li
 {
-  color:white;
+  margin: 0 10px;
+}
+
+.dropdown-item img
+{
+  margin-right:5px;
 }
 
 .profile-img
@@ -131,6 +120,54 @@ a, a:hover, a:active, a:visited
   padding:0;
 }
 
+.card #date
+{
+  margin-top:10px;
+  float:right;
+  font-size:0.8em;
+  font-weight: 400;
+}
+
+#card-post .card-header
+{
+  border:none !important;
+  background-color: white;
+  padding-bottom:0;
+}
+
+#card-post .card-body
+{
+  color: #64696D !important;
+  padding-top:0;
+  font-weight: 400;
+}
+
+
+.card #profile-image img
+{
+  border-radius: 50%;
+  border:3px solid white;
+  box-shadow: -5px 15px 25px -15px #9B9CA3;
+  margin-left:-50px;
+  margin-right:10px;
+}
+.card #name
+{
+  color: #5AB9EE;
+    font-weight: 400;
+}
+
+.card #screen-name, #date
+{
+  color: #CBCDD6;
+  font-weight: 400;
+}
+
+#card-post .card-body
+{
+  margin-left:25px;
+}
+
 .form-group #caption 
 {
     border: none;
@@ -175,13 +212,29 @@ textarea.form-control::placeholder
   font-weight: 300;  
 }
 
-.dropdown .dropdown-menu {
-  display: block;
-  overflow: hidden;
+.dropdown .dropdown-menu 
+{
+  display:block;
+  overflow:hidden;
   margin-top:10px;
 }
-.invisible {
-  opacity: 0;
+
+.invisible 
+{
+  opacity:0;
+}
+
+.swal-button 
+{
+  border-radius: 0;
+  padding:10px 30px;
+  background-color: rgba(80,88,198,0.8);
+  border:none;
+  letter-spacing: 0.5px;
+  font-weight: 300;
+  color:white;
+  width:110px;
+  height:44px;
 }
 
 .spinner 

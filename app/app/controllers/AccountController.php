@@ -30,7 +30,7 @@ class AccountController extends MY_Controller
 	 * @access public
 	 * @param $data - Data of the post.
 	 */
-	public function post()
+	public function create_post()
 	{
 		/* Check if form was submitted, if not then redirect. */
 		if(!$this->input->post())

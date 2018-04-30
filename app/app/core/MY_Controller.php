@@ -21,9 +21,22 @@ class MY_Controller extends CI_Controller
     public function view($page, $data = NULL) 
     {
         /* Check to ensure the page exists. Otherwise display an error. */
-        if(!file_exists(APPPATH . 'views/'.$page)) 
+        if(is_array($page))
         {
-            show_404();
+            for($i = 0; $i < count($page); $i++)
+            {
+                if(!file_exists(APPPATH . 'views/'.$page[$i])) 
+                {
+                    show_404();
+                }
+            }
+        }
+        else
+        {
+            if(!file_exists(APPPATH . 'views/'.$page)) 
+                {
+                    show_404();
+                }
         }
         
         /* Load the header template file. */
@@ -36,9 +49,16 @@ class MY_Controller extends CI_Controller
         }
 
         /* Load the pages requested by the controller. */
-        for($i = 0; $i < count($page); $i++)
+        if(is_array($page)) /* Multi Pages */
         {
-            $this->load->view($page);
+            for($i = 0; $i < count($page); $i++)
+            {
+                $this->load->view($page[$i], $data);
+            }
+        }
+        else /* Single Pages */
+        {
+            $this->load->view($page, $data);
         }
 
         /* Load the footer template file. */

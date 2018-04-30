@@ -3,7 +3,7 @@ $form_attributes = array('class' => 'm-3 animated ', 'id' => 'form-post');
 ?>
 <div class="container-fluid mt-5">
     <div class="row h-100 justify-content-center align-items-center">  
-        <div class="col-12">
+        <div class="col-12 mb-3">
             <?php echo form_open('/account/post', $form_attributes); ?>
                 <div class="card card-post mx-auto" style="max-width:600px; width:auto;">
                 <div class="card-body">
