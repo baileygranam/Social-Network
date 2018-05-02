@@ -1,6 +1,6 @@
 <?php 
 
-if(!empty($posts)) { foreach ($posts->result() as $row) { ?>
+if(!empty($posts)) { foreach ($posts as $row) { ?>
 <div class="container-fluid">
     <div class="row h-100 justify-content-center align-items-center">  
         <div class="col-12">
@@ -47,6 +47,12 @@ if(!empty($posts)) { foreach ($posts->result() as $row) { ?>
                     </div>
                     <div class="card-body">
                         <?php echo $row->caption; ?>
+                    </div>
+                    <div class="card-footer" style="padding:15px;">
+                        <?php if($row->user_id == $this->session->user_id) { ?>
+                        <a href="/posts/delete/<?php echo $row->post_id; ?>"><img src="https://png.icons8.com/material/24/8A8A8A/cancel.png"></a>
+                        <?php } ?>
+                        <a href="/posts/like/<?php echo $row->post_id; ?>"><img src="https://png.icons8.com/material/26/8A8A8A/hearts.png"> <?php echo $row->likes; ?></a>
                     </div>
                 </div>
             </div>

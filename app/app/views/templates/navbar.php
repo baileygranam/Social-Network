@@ -4,9 +4,6 @@
             <li class="nav-item <?php if($this->uri->segment(1) == 'dashboard') echo 'active'; ?>">
                 <a class="nav-link" href="/dashboard">Dashboard</a>
             </li>
-            <li class="nav-item <?php if($this->uri->segment(1) == 'messages') echo 'active'; ?>">
-                <a class="nav-link" href="/messages">Messages</a>
-            </li>
             <li class="nav-item <?php if($this->uri->segment(1) == 'teams') echo 'active'; ?>">
                 <a class="nav-link" href="/teams">Teams</a>
             </li>

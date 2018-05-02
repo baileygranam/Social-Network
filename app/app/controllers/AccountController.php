@@ -128,4 +128,28 @@ class AccountController extends MY_Controller
 
         return false;
 	}
+
+    /**
+     * Method to delete a post.
+     *
+     * @access public
+     * @param $data - Data of the post.
+     */
+    public function delete_post($post_id)
+    {
+        $this->Post->delete($post_id);
+        redirect('/dashboard');
+    }
+
+    /**
+     * Method to like a post.
+     *
+     * @access public
+     * @param $data - Data of the post.
+     */
+    public function like_post($post_id)
+    {
+        $this->Post->like($post_id);
+        redirect('/dashboard');
+    }
 }

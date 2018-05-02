@@ -46,6 +46,33 @@ class Post extends CI_Model
     }
 
     /**
+     * Method to like a post.
+     * 
+     * @access public
+     * @param  $id     - ID of post to be liked.
+     * @return boolean - True if success, false if fail.
+     */
+    public function like($id)
+    {
+
+        $this->db->from('post_likes')
+                 ->where('post_likes.post_id', $id)
+                 ->where('post_likes.user_id', $this->session->user_id);
+        $data = $this->db->get();
+
+        if($data->num_rows() == 0)
+        {
+            $data = array(
+                'post_id' => $id,
+                'user_id' => $this->session->user_id
+            );
+            $this->db->insert('post_likes', $data);
+        }
+
+        return ($this->db->affected_rows() != 1) ? false : true;
+    }
+
+    /**
      * Method to retrieve a timeline of user/friend posts.
      * 
      * @access public
@@ -75,13 +102,20 @@ class Post extends CI_Model
          */
         if(!empty($result))
         {
-            $this->db->select('posts.caption, posts.created_at, users.username, users.first_name, users.last_name, users.avatar')
+            $this->db->select('posts.post_id, posts.user_id, posts.caption, posts.created_at, users.username, users.first_name, users.last_name, users.avatar, post_attachments.file_name, post_attachments.file_type_id')
                      ->from('posts')
                      ->join('users', 'users.user_id = posts.user_id')
+                     ->join('post_attachments', 'post_attachments.post_id = posts.post_id', 'LEFT')
                      ->where('posts.isDeleted', 0)
                      ->where_in('posts.post_id', $result)
                      ->order_by('posts.post_id', 'DESC');
-            $data = $this->db->get();
+            $data = ($this->db->get())->result();
+
+            /* Get the number of likes on a post. */
+            for($i = 0; $i < count($data); $i++)
+            {
+                $data[$i]->likes = $this->get_post_likes($data[$i]->post_id);
+            }
 
             return $data;
         }
@@ -123,6 +157,21 @@ class Post extends CI_Model
         $data = $this->db->get();
 
         return $data;
+    }
+
+    /**
+     * Method to retrieve the number of likes on a post. 
+     * 
+     * @param $id  - ID of post to retrieve likes.
+     * @return int - Number of likes on a post.
+     */
+    private function get_post_likes($id)
+    {
+        $this->db->from('post_likes')
+                 ->where('post_likes.post_id', $id);
+        $data = $this->db->get();
+
+        return ($data->num_rows());
     }
 
 }
