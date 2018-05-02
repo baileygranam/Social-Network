@@ -26,7 +26,7 @@
         <ul class="navbar-nav ml-auto">
             <div class="dropdown show">
                 <span class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor:pointer;">
-                    <img src="https://media.licdn.com/dms/image/C5103AQE6vXK_Uptc9A/profile-displayphoto-shrink_200_200/0?e=1530111600&v=beta&t=jAQ-47DgFBCPdl2aaGVsB5ABcjwknMuhEJ9IGnPL-uA" class="profile-img" aria-haspopup="true" aria-expanded="false"> 
+                    <img src="/uploads/<?php echo $this->session->avatar; ?>" class="profile-img" aria-haspopup="true" aria-expanded="false"> 
                     <?php echo ucfirst($this->session->first_name) . ' ' . ucfirst($this->session->last_name); ?>
                   </span>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">

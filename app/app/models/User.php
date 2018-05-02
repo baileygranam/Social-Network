@@ -57,7 +57,7 @@ class User extends CI_Model
     public function get_user($email)
     {
         /* Define/build the query. */
-        $this->db->select('user_id, email, first_name, last_name, username');
+        $this->db->select('user_id, email, first_name, last_name, username, avatar');
         $this->db->from('users');
         $this->db->where('email', $email);
         /* Retrieve the result. */
@@ -71,7 +71,8 @@ class User extends CI_Model
             'email'      => $result->email,
             'first_name' => $result->first_name,
             'last_name'  => $result->last_name,
-            'username'   => $result->username
+            'username'   => $result->username,
+            'avatar'     => $result->avatar
         );
         return ($data);
     }

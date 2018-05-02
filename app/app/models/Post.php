@@ -16,11 +16,18 @@ class Post extends CI_Model
      * 
      * @access public
      * @param  $data   - Array of post data.
-     * @return boolean - True if success, false if fail.
+     * @return int     - Post ID, if success.
+     * @return boolean - If false.
      */
     public function create($data)
     {
-        return $this->db->insert('posts', $data);
+        $this->db->insert('posts', $data['post']);
+        return ($this->db->affected_rows() != 1) ? false : $this->db->insert_id();
+    }
+
+    public function upload($data)
+    {
+        $this->db->insert('post_attachments', $data);
     }
 
     /**
@@ -49,6 +56,7 @@ class Post extends CI_Model
         $this->db->select('*')
                  ->from('posts')
                  ->join('users', 'posts.user_id = users.user_id', 'INNER')
+                 ->join('post_attachments', 'posts.post_id = post_attachments.post_id', 'LEFT')
                  ->where('users.user_id', $this->session->user_id)
                  ->where('posts.isDeleted', 0)
                  ->order_by('posts.post_id', 'DESC');

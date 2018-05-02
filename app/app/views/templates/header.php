@@ -17,6 +17,8 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
 		<!-- Custom CSS -->
+		<link rel="stylesheet" href="/css/reset.css" />
+		<link rel="stylesheet" href="/css/audioplayer.css" />
 		<link rel="stylesheet" href="/css/styles.css"/>
 
 		<!-- JQuery CDN -->
@@ -33,7 +35,6 @@
 		<!-- Custom JS -->
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="/js/main.js"></script>
-		<script src="/js/notify.js"></script>
 	</head>
 <body>
 

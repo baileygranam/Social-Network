@@ -1,18 +1,36 @@
-<?php
-if(!empty($posts))
-{
-    foreach ($posts->result() as $row)
-    {
-?>
+<?php if(!empty($posts)) { foreach ($posts->result() as $row) { ?>
 <div class="container-fluid">
     <div class="row h-100 justify-content-center align-items-center">  
         <div class="col-12">
             <div class="m-4">
                 <div class="card card-post mx-auto" id="card-post" style="max-width:600px; width:auto;">
+                    <?php if(!empty($row->file_name) && $row->file_type_id == 1) { ?>
+                    <img class="card-img-top" src="/uploads/<?php echo $row->file_name; ?>" alt="Card image cap">
+                    <?php } if(!empty($row->file_name) && $row->file_type_id == 2) { ?>
+                    <div align="center" class="embed-responsive embed-responsive-16by9">
+                        <video class="embed-responsive-item" onclick="this.paused ? this.play() : this.pause();">
+                            <source src="/uploads/<?php echo $row->file_name; ?>" type="video/mp4">
+                        </video>
+                    </div>
+                    <?php } if(!empty($row->file_name) && $row->file_type_id == 3) { ?>
+                    <div id="wrapper">
+                        <audio preload="auto" controls>
+                            <source src="/uploads/<?php echo $row->file_name; ?>">
+                        </audio>
+                        <script src="/js/jquery.js"></script>
+                        <script src="/js/audioplayer.js"></script>
+                        <script>$( function() { $( 'audio' ).audioPlayer(); } );</script>
+
+                        <div class="attribution">
+                            <div xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/" about="http://freemusicarchive.org/music/Blue_Ducks/Six/">
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
                     <div class="card-header">
                         <a href="/profile/<?php echo $row->username; ?>" target="_blank">
                             <span id="profile-image">
-                                <img src="https://media.licdn.com/dms/image/C5103AQE6vXK_Uptc9A/profile-displayphoto-shrink_200_200/0?e=1530111600&v=beta&t=jAQ-47DgFBCPdl2aaGVsB5ABcjwknMuhEJ9IGnPL-uA" width="60">
+                                <img src="/uploads/<?php echo $row->avatar; ?>" width="60">
                             </span>
                             <span id="name">
                                 <?php echo ucfirst($row->first_name) . ' ' .  ucfirst($row->last_name); ?>
@@ -33,6 +51,4 @@ if(!empty($posts))
         </div>  
     </div>
 </div>
-
-<?php }
-}  ?>
+<?php } } ?>

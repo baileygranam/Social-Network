@@ -54,12 +54,20 @@ $(document).ready(function()
 
         var caption = $('#caption').val();
 
+        var file_data = $('#file-input').prop('files')[0];
+        var form_data = new FormData();
+        form_data.append('file', file_data);
+        form_data.append('caption', caption);
         $.ajax({
-            type: "POST",
-            url: '/posts/create',
-            data: {caption: caption},
-            success: function(data){
-                if(data == 1)
+            type: 'POST',
+            url: '/posts/create', 
+            dataType: 'text', 
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            success: function (response) {
+                if(response == 1)
                 {
                     swal("Success!", "Your post has been created.", "success");
                     setTimeout( 
@@ -83,6 +91,7 @@ $(document).ready(function()
                 }, 800);
             }
         });
+
     })
 
 
