@@ -1,4 +1,6 @@
-<?php if(!empty($posts)) { foreach ($posts->result() as $row) { ?>
+<?php 
+
+if(!empty($posts)) { foreach ($posts->result() as $row) { ?>
 <div class="container-fluid">
     <div class="row h-100 justify-content-center align-items-center">  
         <div class="col-12">
