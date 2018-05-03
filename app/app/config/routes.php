@@ -49,20 +49,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */  
-$route['login']                = 'LoginController/index';
-$route['login/submit']         = 'LoginController/login';
 
-$route['register']             = 'RegisterController/index';
-$route['register/submit']      = 'RegisterController/register';
+$route['login']                 = 'LoginController/index';
+$route['login/submit']          = 'LoginController/login';
 
-$route['logout']               = 'LoginController/logout';
+$route['register']              = 'RegisterController/index';
+$route['register/submit']       = 'RegisterController/register';
 
-$route['dashboard']            = 'DashboardController/index';
+$route['logout']                = 'LoginController/logout';
 
-$route['posts/create']         = 'AccountController/create_post';
-$route['posts/delete/(:num)']  = 'AccountController/delete_post/$1';
-$route['posts/like/(:num)']    = 'AccountController/like_post/$1';
+$route['timeline']              = 'TimelineController/index';
 
-$route['default_controller']   = 'MainController';
-$route['404_override']         = '';
-$route['translate_uri_dashes'] = FALSE;
+$route['posts/create']          = 'PostController/create';
+$route['posts/delete/(:num)']   = 'PostController/delete/$1';
+$route['posts/like/(:num)']     = 'PostController/like/$1';
+
+$route['friends']               = 'FriendController/index';
+$route['friends/add/(:num)']    = 'FriendController/add/$1';
+$route['friends/remove/(:num)'] = 'FriendController/remove/$1';
+
+$route['default_controller']    = 'TimelineController';
+$route['404_override']          = '';
+$route['translate_uri_dashes']  = FALSE;

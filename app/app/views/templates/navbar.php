@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item <?php if($this->uri->segment(1) == 'dashboard') echo 'active'; ?>">
-                <a class="nav-link" href="/dashboard">Dashboard</a>
+            <li class="nav-item <?php if($this->uri->segment(1) == 'timeline') echo 'active'; ?>">
+                <a class="nav-link" href="/timeline">Timeline</a>
             </li>
-            <li class="nav-item <?php if($this->uri->segment(1) == 'teams') echo 'active'; ?>">
-                <a class="nav-link" href="/teams">Teams</a>
+            <li class="nav-item <?php if($this->uri->segment(1) == 'groups') echo 'active'; ?>">
+                <a class="nav-link" href="/groups">Groups</a>
             </li>
             <li class="nav-item <?php if($this->uri->segment(1) == 'friends') echo 'active'; ?>">
                 <a class="nav-link" href="/friends">Friends</a>

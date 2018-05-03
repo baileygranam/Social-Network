@@ -1,7 +1,7 @@
 <?php 
 $form_attributes = array('class' => 'm-3 animated ', 'id' => 'form-post');
 ?>
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-5 animated zoomIn">
     <div class="row h-100 justify-content-center align-items-center">  
         <div class="col-12 mb-3">
             <?php echo form_open_multipart('/posts/create', $form_attributes); ?>

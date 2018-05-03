@@ -42,6 +42,16 @@ class MY_Controller extends CI_Controller
         /* Load the header template file. */
         $this->load->view('templates/header', $data);
 
+        /* If an error exists then display it. */
+        if(!empty($this->session->flashdata('error_message')))
+        {
+            $this->load->view('templates/error.php');
+        }
+        else if(!empty($this->session->flashdata('success_message')))
+        {
+            $this->load->view('templates/success.php');
+        }
+
         /* Load the navigation bar for logged in users. */
         if(!empty($this->session->user_id))
         {
@@ -74,10 +84,12 @@ class MY_Controller extends CI_Controller
     {
         $controller_list = array(
             'MainController'      => 1,
-            'DashboardController' => 1,
+            'TimelineController'  => 1,
             'LoginController'     => 0,
             'RegisterController'  => 0,
-            'AccountController'   => 1
+            'PostController'      => 1,
+            'FriendController'    => 1,
+            'ErrorController'     => 2
         );
 
         if($this->router->fetch_method() != 'logout')

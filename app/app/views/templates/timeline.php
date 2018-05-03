@@ -1,7 +1,5 @@
-<?php 
-
-if(!empty($posts)) { foreach ($posts as $row) { ?>
-<div class="container-fluid">
+<?php if(!empty($posts)) { foreach ($posts as $row) { ?>
+<div class="container-fluid animated zoomIn">
     <div class="row h-100 justify-content-center align-items-center">  
         <div class="col-12">
             <div class="m-4">
@@ -52,7 +50,7 @@ if(!empty($posts)) { foreach ($posts as $row) { ?>
                         <?php if($row->user_id == $this->session->user_id) { ?>
                         <a href="/posts/delete/<?php echo $row->post_id; ?>"><img src="https://png.icons8.com/material/24/8A8A8A/cancel.png"></a>
                         <?php } ?>
-                        <a href="/posts/like/<?php echo $row->post_id; ?>"><img src="https://png.icons8.com/material/26/8A8A8A/hearts.png"> <?php echo $row->likes; ?></a>
+                        <a href="/posts/like/<?php echo $row->post_id; ?>"><img src="https://png.icons8.com/material/26/8A8A8A/hearts.png"></a><?php echo $row->likes; ?>
                     </div>
                 </div>
             </div>

@@ -12,25 +12,24 @@ class User extends CI_Model
     /**
      * Method to create a new user.
      * 
-     * @access public
      * @param  $data   - Array of user data.
      * @return boolean - True if success, false if fail.
      */
-    public function create_user($data)
+    public function create($data)
     {
         /* Hash Password using Bcrypt. */
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         /* Return result of registration. */
         return $this->db->insert('users', $data);
     }
+
     /**
      * Method to authenticate a user's credentials. 
      *
-     * @access public
      * @param $data - Array of user data.
      * @return boolean - True if success, false if fail.
      */
-    public function authenticate_user($data) 
+    public function authenticate($data) 
     {
         /* Define/build the query. */
         $this->db->select('password');
@@ -47,14 +46,14 @@ class User extends CI_Model
         /* Return status of login authentication. */
         return ($verify);
     }
+
     /**
      * Method to retrieve a user's common data. 
      *
-     * @access public
-     * @param $email - Email of a user.
+     * @param $email (String) - Email of a user.
      * @return $data - Array of user data.
      */
-    public function get_user($email)
+    public function get($email)
     {
         /* Define/build the query. */
         $this->db->select('user_id, email, first_name, last_name, username, avatar');
@@ -71,6 +70,7 @@ class User extends CI_Model
             'email'      => $result->email,
             'first_name' => $result->first_name,
             'last_name'  => $result->last_name,
+            'full_name'  => ucfirst($result->first_name) . ' ' . ucfirst($result->last_name),
             'username'   => $result->username,
             'avatar'     => $result->avatar
         );

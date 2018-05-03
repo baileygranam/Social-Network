@@ -2,35 +2,26 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * The AccountController class is used in controlling operations that
+ * The PostController class is used in controlling operations that
  * relate to user accounts. i.e posting, settings, etc.
  *
  * @author Bailey Granam
  */
-class AccountController extends MY_Controller 
+class PostController extends MY_Controller 
 {
-	/**
-	 * The purpose of the constructor is to instantiate the AccountController 
-	 * and required dependencies.
-	 */
+	/* Constructor */
 	public function __construct() 
 	{
 		parent::__construct();
 
-		/* Load the Account model. */
-        $this->load->model('Account');
-
-        /* Load the Post mode. */
+        /* Load the Post model. */
         $this->load->model('Post');
     }
 
    	/**
 	 * Method to create a post.
-	 *
-	 * @access public
-	 * @param $data - Data of the post.
 	 */
-	public function create_post()
+	public function create()
 	{        
 		/* Check if form was submitted, if not then redirect. */
 		if(!$this->input->post())
@@ -132,24 +123,22 @@ class AccountController extends MY_Controller
     /**
      * Method to delete a post.
      *
-     * @access public
-     * @param $data - Data of the post.
+     * @param $id (int) - ID of the post to delete.
      */
-    public function delete_post($post_id)
+    public function delete($id)
     {
-        $this->Post->delete($post_id);
-        redirect('/dashboard');
+        $this->Post->delete($id);
+        redirect('/timeline');
     }
 
     /**
      * Method to like a post.
      *
-     * @access public
-     * @param $data - Data of the post.
+     * @param $id (int) - ID of the post to like.
      */
-    public function like_post($post_id)
+    public function like($id)
     {
-        $this->Post->like($post_id);
-        redirect('/dashboard');
+        $this->Post->like($id);
+        redirect('/timeline');
     }
 }

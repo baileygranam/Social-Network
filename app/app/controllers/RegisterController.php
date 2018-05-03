@@ -65,7 +65,7 @@ class RegisterController extends MY_Controller
 		/* Check for input validation and if registration passed.
 		 * If failed go back to registration form with errors.
 		 */
-    	if (!$this->validate() || !($this->User->create_user($data))) 
+    	if (!$this->validate() || !($this->User->create($data))) 
     	{
     		$this->session->set_flashdata('error', true);
     		$errors = form_error('first_name') . ' ' . form_error('last_name') . ' ' . form_error('email') . ' ' . form_error('username') . ' ' . form_error('password');
@@ -87,7 +87,7 @@ class RegisterController extends MY_Controller
     private function auto_login($email)
     {
         /* Retrieve the user's data. */
-        $data = $this->User->get_user($email);
+        $data = $this->User->get($email);
 
         /* Add user data to the session */
         $this->session->set_userdata($data);

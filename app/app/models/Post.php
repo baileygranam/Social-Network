@@ -1,11 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Model to manage posts such as creation, deletion, and liking.
+ *
+ * @author Bailey Granam
+ */
 class Post extends CI_Model
 {
-    /**
-     * Class Constructor
-     */
+    /* Constructor */
     public function __construct()
     {
         parent::__construct();
@@ -14,10 +17,9 @@ class Post extends CI_Model
     /**
      * Method to create a new post.
      * 
-     * @access public
-     * @param  $data   - Array of post data.
-     * @return int     - Post ID, if success.
-     * @return boolean - If false.
+     * @param  $data (array) - Array of post data.
+     * @return int           - Post ID, if success.
+     * @return boolean       - If false.
      */
     public function create($data)
     {
@@ -25,6 +27,9 @@ class Post extends CI_Model
         return ($this->db->affected_rows() != 1) ? false : $this->db->insert_id();
     }
 
+    /**
+     * Method to upload attachments to a post.
+     */
     public function upload($data)
     {
         $this->db->insert('post_attachments', $data);
@@ -33,7 +38,6 @@ class Post extends CI_Model
     /**
      * Method to delete a post.
      * 
-     * @access public
      * @param  $id     - ID of post to be deleted.
      * @return boolean - True if success, false if fail.
      */
@@ -48,7 +52,6 @@ class Post extends CI_Model
     /**
      * Method to like a post.
      * 
-     * @access public
      * @param  $id     - ID of post to be liked.
      * @return boolean - True if success, false if fail.
      */
@@ -75,7 +78,6 @@ class Post extends CI_Model
     /**
      * Method to retrieve a timeline of user/friend posts.
      * 
-     * @access public
      * @return $data   - Timeline of posts.
      * @return boolean - False if no posts found.
      */
@@ -149,10 +151,10 @@ class Post extends CI_Model
     {
         $this->db->select('posts.post_id')
                  ->from('posts')
-                 ->join('friends', 'friends.friend_id = posts.user_id', 'INNER')
+                 ->join('friends', 'friends.friend_id = posts.user_id OR friends.user_id = posts.user_id', 'INNER')
                  ->where('friends.user_id', $this->session->user_id)
+                 ->or_where('friends.friend_id', $this->session->user_id)
                  ->where('posts.isDeleted', 0)
-                 ->where('friends.status', 1)
                  ->order_by('posts.post_id', 'DESC');
         $data = $this->db->get();
 
