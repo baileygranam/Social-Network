@@ -1,5 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * Model to control users such as creating accounts, authenticating, and getting user data.
+ *
+ * @author Bailey Granam
+ */
 class User extends CI_Model
 {
     /**

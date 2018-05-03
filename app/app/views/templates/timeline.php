@@ -30,7 +30,7 @@
                     <div class="card-header">
                         <a href="/profile/<?php echo $row->username; ?>" target="_blank">
                             <span id="profile-image">
-                                <img src="/uploads/<?php echo $row->avatar; ?>" width="60">
+                                <img src="/uploads/<?php echo (empty($row->avatar)) ? 'default.jpg' : $row->avatar; ?>" width="60" height="60">
                             </span>
                             <span id="name">
                                 <?php echo ucfirst($row->first_name) . ' ' .  ucfirst($row->last_name); ?>

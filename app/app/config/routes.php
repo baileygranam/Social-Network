@@ -50,24 +50,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */  
 
-$route['login']                 = 'LoginController/index';
-$route['login/submit']          = 'LoginController/login';
+$route['login']                    = 'LoginController/index';
+$route['login/submit']             = 'LoginController/login';
 
-$route['register']              = 'RegisterController/index';
-$route['register/submit']       = 'RegisterController/register';
+$route['register']                 = 'RegisterController/index';
+$route['register/submit']          = 'RegisterController/register';
 
-$route['logout']                = 'LoginController/logout';
+$route['logout']                   = 'LoginController/logout';
 
-$route['timeline']              = 'TimelineController/index';
+$route['timeline']                 = 'TimelineController/index';
 
-$route['posts/create']          = 'PostController/create';
-$route['posts/delete/(:num)']   = 'PostController/delete/$1';
-$route['posts/like/(:num)']     = 'PostController/like/$1';
+$route['posts/create']             = 'PostController/create';
+$route['posts/delete/(:num)']      = 'PostController/delete/$1';
+$route['posts/like/(:num)']        = 'PostController/like/$1';
 
-$route['friends']               = 'FriendController/index';
-$route['friends/add/(:num)']    = 'FriendController/add/$1';
-$route['friends/remove/(:num)'] = 'FriendController/remove/$1';
+$route['friends']                  = 'FriendController/index';
+$route['friends/add/(:num)']       = 'FriendController/add/$1';
+$route['friends/remove/(:num)']    = 'FriendController/remove/$1';
 
-$route['default_controller']    = 'TimelineController';
-$route['404_override']          = '';
-$route['translate_uri_dashes']  = FALSE;
+$route['search']                   = 'SearchController/index';
+$route['search/search']            = 'SearchController/search';
+
+$route['groups']                   = 'GroupController/index';
+$route['groups/create']            = 'GroupController/create';
+$route['groups/(:num)']            = 'GroupController/get/$1';
+$route['groups/(:num)/add/(:num)'] = 'GroupController/add/$1/$2';
+
+$route['default_controller']       = 'TimelineController';
+$route['404_override']             = '';
+$route['translate_uri_dashes']     = FALSE;

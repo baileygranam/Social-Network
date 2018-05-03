@@ -8,6 +8,6 @@ class MainController extends MY_Controller
 	 */
 	public function index()
 	{
-		$this->view('main/index.php');
+		$this->redirect('/');
 	}
 }

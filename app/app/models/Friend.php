@@ -50,14 +50,14 @@ class Friend extends CI_Model
     /**
      * Method to see if two users are already friends.
      *
-     * @param  $id (int) - ID to check if user is friends with.
-     * @return boolean   - True if friends, false if not.
+     * @param  $data (array) - The ID of the user and friend they want to add.
+     * @return boolean       - True if friends, false if not.
      */
-    private function isFriends($id)
+    public function isFriends($data)
     {
         $this->db->from('friends')
-                 ->where('friends.user_id', $this->session->user_id)
-                 ->where('friends.friend_id', $id);
+                 ->where('friends.user_id', $data['user_id'])
+                 ->where('friends.friend_id', $data['friend_id']);
         $data = $this->db->get();
 
         return ($data->num_rows() != 0);

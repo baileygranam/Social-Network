@@ -89,7 +89,9 @@ class MY_Controller extends CI_Controller
             'RegisterController'  => 0,
             'PostController'      => 1,
             'FriendController'    => 1,
-            'ErrorController'     => 2
+            'ErrorController'     => 2,
+            'SearchController'    => 1,
+            'GroupController'     => 1
         );
 
         if($this->router->fetch_method() != 'logout')

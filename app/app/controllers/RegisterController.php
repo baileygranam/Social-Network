@@ -17,8 +17,6 @@ class RegisterController extends MY_Controller
 
     /**
 	 * Method to load the registration page for this controller.
-	 *
-	 * @access public
 	 */
 	public function index()
 	{
@@ -27,8 +25,6 @@ class RegisterController extends MY_Controller
 
    /**
     * Method to register a new user.
-    * 
-    * @access public
     */
     public function register()
     {
@@ -81,8 +77,6 @@ class RegisterController extends MY_Controller
     /**
      * Method to automatically login a user without a password. 
      * Used for post-registration login.
-     *
-     * @access private
      */
     private function auto_login($email)
     {
@@ -93,6 +87,6 @@ class RegisterController extends MY_Controller
         $this->session->set_userdata($data);
 
         /* Redirect to the home page. */
-        redirect('/dashboard');
+        redirect('/');
     }
 }

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item <?php if($this->uri->segment(1) == 'timeline') echo 'active'; ?>">
+            <li class="nav-item <?php if($this->uri->segment(1) == 'timeline' || $this->uri->segment(1) == '') echo 'active'; ?>">
                 <a class="nav-link" href="/timeline">Timeline</a>
             </li>
             <li class="nav-item <?php if($this->uri->segment(1) == 'groups') echo 'active'; ?>">
@@ -9,6 +9,9 @@
             </li>
             <li class="nav-item <?php if($this->uri->segment(1) == 'friends') echo 'active'; ?>">
                 <a class="nav-link" href="/friends">Friends</a>
+            </li>
+            <li class="nav-item <?php if($this->uri->segment(1) == 'search') echo 'active'; ?>">
+                <a class="nav-link" href="/search">Search</a>
             </li>
         </ul>
     </div>
@@ -23,7 +26,7 @@
         <ul class="navbar-nav ml-auto">
             <div class="dropdown show">
                 <span class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor:pointer;">
-                    <img src="/uploads/<?php echo $this->session->avatar; ?>" class="profile-img" aria-haspopup="true" aria-expanded="false"> 
+                    <img src="/uploads/<?php echo (empty($this->session->avatar)) ? 'default.jpg' : $this->session->avatar; ?>" class="profile-img" aria-haspopup="true" aria-expanded="false"> 
                     <?php echo ucfirst($this->session->first_name) . ' ' . ucfirst($this->session->last_name); ?>
                   </span>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
