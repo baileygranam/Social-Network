@@ -37,7 +37,7 @@ $form_attributes = array('class' => 'animated ' . $animation, 'id' => 'form');
 					<input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo set_value('email'); ?>" required>
 					</div>
 					<div class="form-row">
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-4">
 							<small class="form-text text-muted" for="username">Username</small>
 								<div class="input-group mb-2">
 								<div class="input-group-prepend">
@@ -46,9 +46,13 @@ $form_attributes = array('class' => 'animated ' . $animation, 'id' => 'form');
 								<input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?php echo set_value('username'); ?>" required>
 								</div>
 						</div>
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-4">
 							<small class="form-text text-muted" for="Password">Password</small>
 								<input type="password" class="form-control" pattern=".{8,}" title="Password must contain at least 8 characters." name="password" placeholder="Password" required>
+						</div>
+						<div class="form-group col-md-4">
+							<small class="form-text text-muted" for="Password">Confirm Password</small>
+								<input type="password" class="form-control" pattern=".{8,}" title="Password must contain at least 8 characters." name="confirm_password" placeholder="Confirm Password" required>
 						</div>
 					</div>
 						<button class="btn btn-dark btn-register mt-4" type="submit">SIGN UP</button>

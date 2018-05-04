@@ -34,6 +34,8 @@ class RegisterController extends MY_Controller
 			redirect('register');
 		}
 
+ 
+
     	/* Set the form validation rules to ensure input validity. */
 		$this->form_validation->set_rules('first_name', 'First Name', 'trim|required|min_length[2]|max_length[35]|alpha_numeric');
         $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required|min_length[2]|max_length[35]|alpha_numeric');

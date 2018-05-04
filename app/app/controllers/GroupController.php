@@ -69,7 +69,7 @@ class GroupController extends MY_Controller
     			/* Add the owner to the group after the group is created. */
     			$this->Group->add_member($result, $this->session->user_id);
 
-    			redirect('/groups/'.$result);
+    			redirect('/groups/'.$result.'/');
     		}
     	}
     	else /* If something went wrong then present an error. */
@@ -134,6 +134,6 @@ class GroupController extends MY_Controller
 		$this->session->set_flashdata($data);
 	    $this->session->keep_flashdata($data);
 
-		redirect('/groups/'.$group_id);
+		redirect('/groups/'.$group_id .'/');
 	}
 }
