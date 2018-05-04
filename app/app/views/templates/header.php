@@ -4,12 +4,12 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta charset="UTF-8">
-		<title>Iluminous | <?php echo (!empty($title)) ? $title : 'Home'; ?></title>
+		<title>Facebook | <?php echo (!empty($title)) ? $title : 'Home'; ?></title>
 
 		<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 		<META HTTP-EQUIV="Expires" CONTENT="-1">
 		<!-- Icon -->
-		<link rel="icon" href="https://png.icons8.com/color/96/000000/light.png">
+		<link rel="icon" href="https://png.icons8.com/color/96/8A8A8A/facebook.png">
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />

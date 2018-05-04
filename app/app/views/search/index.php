@@ -32,7 +32,7 @@
 				      		<td><?php echo ucfirst($row->first_name); ?></td>
 				      		<td><?php echo ucfirst($row->last_name); ?></td>
 				      		<td><a href="/profile/<?php echo $row->username; ?>">@<?php echo ucfirst($row->username); ?></a></td>
-				      		<td><img src="/uploads/<?php echo (empty($this->session->avatar)) ? 'default.jpg' : $this->session->avatar; ?>" width="50"></td>
+				      		<td><img src="/uploads/<?php echo (empty($row->avatar)) ? 'default.jpg' : $row->avatar; ?>" width="50"></td>
 				      		<td>
 				      			<?php if($row->user_id == $this->session->user_id) { ?>
 				      			<a href="/profile/<?php echo $row->username; ?>" class="btn btn-dark">View</a>

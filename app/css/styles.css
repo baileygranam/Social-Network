@@ -63,6 +63,15 @@ a, a:hover, a:active, a:visited
   margin: 0 10px;
 }
 
+td img
+{
+  border-radius: 50%;
+  transition: linear 0.3s;
+  height:50px;
+  width:50px;
+  margin: 0 10px;
+}
+
 .profile-img:hover
 {
   box-shadow: 0px 0px 5px #fff;

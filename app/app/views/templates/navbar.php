@@ -16,8 +16,8 @@
         </ul>
     </div>
     <div class="mx-auto order-0">
-        <a class="navbar-brand mx-auto" href="/dashboard"><img src="https://image.flaticon.com/icons/svg/222/222545.svg" width="40" height="40" class="d-inline-block align-top" alt="">
-            Iluminous</a>
+        <a class="navbar-brand mx-auto" href="/dashboard"><img src="https://png.icons8.com/color/96/8A8A8A/facebook.png" width="40" height="40" class="d-inline-block align-top" alt="">
+            Facebook</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>
